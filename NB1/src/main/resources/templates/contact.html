@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extrasspringsecurity5">
+<head th:replace="fragments/include">
+
+</head>
+<body >
+<div class="container">
+    <div th:replace="fragments/nav"></div>
+    <div class="content-wrapper bg-light p-5">
+        <article class="kert-article">
+            <header class="content-header">
+                <h1 class="entry-title">Kapcsolat</h1>
+            </header>
+            <form name="kapcsolat"  th:action="@{/sending}" th:object="${messagetext}" method="post">
+                <div class="form-group">
+                    <label>Név (minimum 5 karakter): </label>
+                    <input class="form-control" type="text" th:field="*{name}" size="20" maxlength="40" required minlength = "5">
+                    <br/>
+                    <label>E-mail (kötelező): </label>
+                    <input class="form-control" type="email" th:field="*{email}" size="30" maxlength="40" required pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                    <br/>
+                    <label>Üzenet (kötelező): </label>
+                    <textarea class="form-control" th:field="*{messageText}" cols="40" rows="10" required></textarea>
+                    <br/>
+                    <input class="btn btn-primary mb-2" type="submit" value="Küld">
+                </div>
+            </form>
+        </article>
+
+    </div>
+    <div th:replace="fragments/footer"></div>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a href="https://szertarsportbolt.hu/" class="navbar-brand">Szertár Sportbolt</a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav">
+                <a th:href="@{index}" class="nav-item nav-link active">Kezdőlap</a>
+                <a th:href="@{contact}" class="nav-item nav-link">Kapcsolat</a>
+                <a th:href="@{messages}" class="nav-item nav-link">Üzenetek</a>
+            </div>
+
+            <div class="navbar-nav ms-auto">
+                <div sec:authorize="isAuthenticated()" id="user">
+                    <em  class="nav-item nav-link">Bejelentkezve: <b>[[${#request.userPrincipal.principal.fullName}]]</b> ( [[${#request.userPrincipal.principal.Username}]] )</em>
+                </div>
+                <a sec:authorize ="isAnonymous()" th:href="@{login}" class="nav-item nav-link active">Belépés</a>
+                <a sec:authorize ="isAnonymous()" th:href="@{register}" class="nav-item nav-link">Regisztráció</a>
+                <a sec:authorize="isAuthenticated()" th:href="@{logout}" class="nav-item nav-link">Kilépés</a>
+
+            </div>
+        </div>
+    </div>
+</nav>
