@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extrasspringsecurity5">
+<head th:replace="fragments/include">
+
+</head>
+<body >
+<div class="container">
+    <div th:replace="fragments/nav"></div>
+    <div class="s-bg-l wnd-background-image fx-none bgpos-center-center bgatt-scroll" data-wnd_section_background="default effects position attachment overlays">
+                  <picture><img src="https://d1di2lzuh97fh2.cloudfront.net/files/22/22x/22xetj.png?ph=3fb2832e50" width="1920" height="430" alt="" loading="lazy" ></picture>
+
+                </div>
+    <div class="container text-center  bg-light p-5">
+        <div>
+            <h3>Regisztráció</h3>
+        </div>
+        <form th:action="@{/registering}" th:object="${user}" method="post" style="max-width:
+600px; margin: 0 auto;">
+            <div class="m-3">
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Felhasználónév: </label>
+                    <div class="col-8">
+                        <input type="text" th:field="*{username}" class="form-control" required />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Jelszó: </label>
+                    <div class="col-8">
+                        <input type="password" th:field="*{password}" class="form-control"
+                               required minlength="6" maxlength="10"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Kereszt név: </label>
+                    <div class="col-8">
+                        <input type="text" th:field="*{firstName}" class="form-control"
+                               required minlength="2" maxlength="20"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Vezeték név: </label>
+                    <div class="col-8">
+                        <input type="text" th:field="*{lastName}" class="form-control"
+                               required minlength="2" maxlength="20" />
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary">Regisztráció</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div th:replace="fragments/footer"></div>
+</div>
+</body>
+</html>
